@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel Hosting</title>
+    <!-- Bootstrap 5 CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+      }
+      .sidebar {
+        width: 220px;
+        min-height: 100vh;
+        /* min-width: 220px;
+        max-width: 220px; */
+        background-color: #343a40;
+        /* color: white; */
+
+        transition: all 0.3s;
+        position: relative;
+        /* overflow-x: hidden; */
+      }
+
+      .sidebar.collapsed {
+        /* min-width: 60px;
+        max-width: 60px; */
+        width: 60px;
+      }
+
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 6px;
+        transition: background 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sidebar.collapsed .label {
+        display: none; /* sembunyikan teks */
+      }
+
+      /* Saat sidebar collapse */
+      .sidebar.collapsed a {
+        justify-content: center; /* icon ditengah */
+        gap: 0; /* hilangkan jarak label */
+      }
+
+      .sidebar a:hover {
+        background: #495057;
+      }
+
+      .sidebar.collapsed .sidebar-title {
+        display: none; /* hilangin "Admin Panel" pas collapse */
+      }
+
+      .toggle-btn {
+        position: absolute;
+        top: 10px;
+        right: -9px;
+        background: #343a40;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        /* width: 30px;
+        height: 30px; */
+        cursor: pointer;
+        /* display: flex; */
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      footer {
+        background: #f8f9fa;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column p-3" id="sidebar">
+      <h4 class="text-white sidebar-title">Admin Panel</h4>
+      <a href="#"
+        ><i class="bi bi-speedometer2"></i
+        ><span class="label">Dashboard</span></a
+      >
+      <a href="#"
+        ><i class="bi bi-people"></i><span class="label">Users</span></a
+      >
+      <a href="#"
+        ><i class="bi bi-server"></i><span class="label">Services</span></a
+      >
+      <a href="#"
+        ><i class="bi bi-credit-card"></i><span class="label">Billing</span></a
+      >
+      <a href="#"
+        ><i class="bi bi-gear"></i><span class="label">Settings</span></a
+      >
+
+      <!-- Tombol collapse -->
+      <button class="toggle-btn" id="toggleBtn">&lt;</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Header / Topbar -->
+      <nav class="navbar navbar-dark bg-secondary px-3">
+        <span class="navbar-text"><b>Welcome, Misbakh</b></span>
+        <button class="btn btn-danger btn-sm">Logout</button>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="p-3 flex-grow-1">
+        <!-- Ringkasan -->
+        <div class="row text-center mb-4">
+          <div class="col-md-3 mb-2">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5>Users</h5>
+                <p class="fs-4">120</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5>Services</h5>
+                <p class="fs-4">45</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5>Billing</h5>
+                <p class="fs-4">Rp 25jt</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-2">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5>Servers</h5>
+                <p class="fs-4 text-success">Online</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabel Data -->
+        <h4>Daftar Users</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Tanggal Daftar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Misbakh Alif</td>
+                <td>misbakhalif@gmail.com</td>
+                <td><span class="badge bg-success">Active</span></td>
+                <td>2025-08-01</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Septian</td>
+                <td>septian@gmail.com</td>
+                <td><span class="badge bg-danger">Inactive</span></td>
+                <td>2025-07-20</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Citra</td>
+                <td>citra@gmail.com</td>
+                <td><span class="badge bg-success">Active</span></td>
+                <td>2025-06-18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <p>&copy; 2025 Misbakh Company</p>
+      </footer>
+    </div>
+
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.getElementById("toggleBtn");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+        // ubah tanda panah
+        if (sidebar.classList.contains("collapsed")) {
+          toggleBtn.innerHTML = "›"; // arah ke kanan
+        } else {
+          toggleBtn.innerHTML = "‹"; // arah ke kiri
+        }
+      });
+    </script>
+  </body>
+</html>
